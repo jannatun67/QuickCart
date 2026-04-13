@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import useAppContext from "../../context/AppContext"
 
 const AddProduct = () => {
+
+  const {getToken} = useAppContext()
 
   const [files, setFiles] = useState([]);
   const [name, setName] = useState('');
@@ -15,6 +18,15 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData()
+
+    formData.append("name", name)
+     formData.append("description", description)
+      formData.append("category", category)
+       formData.append("price", price)
+        formData.append("offerPrice", offerPrice)
+    
+        
   };
 
   return (
